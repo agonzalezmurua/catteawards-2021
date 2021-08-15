@@ -21,7 +21,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Comic Sans MS';
+  font-family: 'Comic Sans MS', 'Marker Felt', sans-serif;
 
   background-color: var(--color-background);
   color: var(--color-text);

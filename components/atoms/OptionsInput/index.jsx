@@ -23,11 +23,13 @@ const Options = ({ options, ...props }) => {
         <label className={styles.error_label}>{meta.error}</label>
       )}
       <datalist name={props.name} id={listId}>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        <select>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       </datalist>
     </>
   );
