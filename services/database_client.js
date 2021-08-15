@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb";
 
 // Database Name
-const dbName = "2020";
+const dbName = "2021";
 const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.skymo.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 /** @type {import('mongodb').MongoClient} */
