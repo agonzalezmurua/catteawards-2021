@@ -38,12 +38,12 @@ export default function Home(props) {
     async (values) => {
       const answers = {};
 
-      Object.entries(values).forEach(([name, username]) => {
+      Object.entries(values).forEach(([name, answer]) => {
         if (name === "momento") {
-          return;
+          answers[name] = answer;
         }
         const { id } = props.members.find(
-          (member) => member.username === username
+          (member) => member.username === answer
         );
 
         answers[name] = id;
