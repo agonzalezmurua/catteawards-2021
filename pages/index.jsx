@@ -39,7 +39,7 @@ export default function Home(props) {
       const answers = {};
 
       Object.entries(values).forEach(([key, value]) => {
-        if (key === "momento") {
+        if (key === "MOMENTO") {
           answers[key] = value;
           return;
         }

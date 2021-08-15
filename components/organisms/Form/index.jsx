@@ -8,7 +8,7 @@ import Moment from "../../molecules/Moment";
 
 const Questionary = (props) => {
   const initialValues = useMemo(() => {
-    let values = { momento: "" };
+    let values = { MOMENTO: "" };
     props.questions.forEach((question) => {
       values[question.name] = "";
     });
@@ -72,7 +72,7 @@ const Questionary = (props) => {
             />
           ))}
           <br />
-          <Moment name="momento" />
+          <Moment name="MOMENTO" />
           <br />
           <Submit type="submit" disabled={isSubmitting}>
             Enviar
