@@ -34,7 +34,7 @@ const Questionary = (props) => {
         }
 
         // Check members
-        if (entry === "momento") {
+        if (entry === "MOMENTO") {
           return;
         }
         if (options.find(({ value }) => value === answer) === undefined) {
