@@ -13,7 +13,7 @@ const Entry = ({
   return (
     <section {...props}>
       {/* <Image src={banner} alt={name} /> */}
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <p>{description}</p>
       <OptionsInput disabled={disabled} name={name} options={options} />
     </section>

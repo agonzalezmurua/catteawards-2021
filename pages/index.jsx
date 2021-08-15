@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo } from "react";
 import Head from "next/head";
+import Image from "next/image";
 import useSWR from "swr";
 import { useSession } from "next-auth/client";
 import Router from "next/router";
@@ -10,8 +11,9 @@ import { Discord } from "../services/discord_client";
 import { Gsheet } from "../services/gsheet_client,";
 import { WebClient, WebClientFetcher } from "../services/web_client";
 
-import Questionary from "../components/organisms/Form";
+import Form from "../components/organisms/Form";
 import Loader from "../components/atoms/Loader";
+import ThankYou from "../components/atoms/ThankYou";
 
 export async function getStaticProps(ctx) {
   const members = await Discord.getMembers();
@@ -68,11 +70,21 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <Loader show={isReady === false} />
         {session && didAnswer === false && (
           <>
-            <Questionary
+            <Image
+              src="https://media.discordapp.net/attachments/145997768056504320/876518402095722528/image0.jpg?width=1440&height=360"
+              alt="banner"
+              width="640"
+              height="160"
+            />
+            <h1>
+              CATTE AWARDS 2021 edition ft. Dante from the devil may cry series
+              & Knuckles with new Funky Mode
+            </h1>
+            <Form
               questions={props.questions}
               members={props.members}
               onSubmit={handleSubmit}
@@ -81,7 +93,7 @@ export default function Home(props) {
         )}
         {session && didAnswer === true && (
           <>
-            <p>Gracias por participar!</p>
+            <ThankYou />
           </>
         )}
       </main>

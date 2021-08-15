@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Formik } from "formik";
 import styles from "./styles.module.css";
 
@@ -22,8 +22,37 @@ const Questionary = (props) => {
     }));
   }, [props.members]);
 
+  const validate = useCallback(
+    async (values) => {
+      const errors = {};
+
+      Object.entries(values).forEach(([entry, answer]) => {
+        if (String(answer).trim().length === 0) {
+          errors[entry] = "Debes ingresar un miembro";
+          return;
+        }
+
+        if (options.find(({ value }) => value === answer) === undefined) {
+          errors[entry] = "Verifica el miembro";
+          return;
+        }
+      });
+
+      if (values.KINGCATTE === "Goatchaser") {
+        errors.KINGCATTE = "Vota x otro culiao 😆";
+      }
+
+      return errors;
+    },
+    [options]
+  );
+
   return (
-    <Formik initialValues={initialValues} onSubmit={props.onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={props.onSubmit}
+      validate={validate}
+    >
       {({ handleSubmit, isSubmitting }) => (
         <form onSubmit={handleSubmit} className={styles.form}>
           {props.questions.map((question) => (

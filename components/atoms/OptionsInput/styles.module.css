@@ -8,3 +8,11 @@
   color: var(--color-text);
   background-color: transparent;
 }
+
+.input_error {
+  border-color: var(--color-error);
+}
+
+.error_label {
+  color: var(--color-error);
+}
