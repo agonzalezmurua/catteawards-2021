@@ -39,6 +39,9 @@ export default function Home(props) {
       const answers = {};
 
       Object.entries(values).forEach(([name, username]) => {
+        if (name === "momento") {
+          return;
+        }
         const { id } = props.members.find(
           (member) => member.username === username
         );
