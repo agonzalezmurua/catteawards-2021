@@ -67,6 +67,15 @@ export default function Home(props) {
       <Head>
         <title>Gremio Awards 2021</title>
         <meta name="description" content="VOTEN LUEGO FEOS CULIAOS" />
+        <meta property="og:title" content="Gremio Awards 2021" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://catteawards-2021.vercel.app" />
+        <meta
+          property="og:image"
+          content="https://media.discordapp.net/attachments/145997768056504320/876518402095722528/image0.jpg"
+        />
+        <meta property="og:description" content="VOTEN LUEGO FEOS CULIAOS" />
+        <meta name="theme-color" content="#ff009d"></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
