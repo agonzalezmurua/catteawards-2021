@@ -38,15 +38,16 @@ export default function Home(props) {
     async (values) => {
       const answers = {};
 
-      Object.entries(values).forEach(([name, answer]) => {
-        if (name === "momento") {
-          answers[name] = answer;
+      Object.entries(values).forEach(([key, value]) => {
+        if (key === "momento") {
+          answers[key] = value;
+          return;
         }
         const { id } = props.members.find(
-          (member) => member.username === answer
+          (member) => member.username === value
         );
 
-        answers[name] = id;
+        answers[key] = id;
       });
 
       await WebClient.post("/api/sendAnswers", answers);

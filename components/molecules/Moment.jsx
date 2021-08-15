@@ -8,7 +8,7 @@ const Moment = (props) => {
         El mejor momento que hayas tenido este año junto al gremio. Puedes
         también dejar un comentario o una dedicatoria
       </p>
-      <TextArea maxlength="250" name={props.name} />
+      <TextArea maxLength="250" name={props.name} />
     </section>
   );
 };
