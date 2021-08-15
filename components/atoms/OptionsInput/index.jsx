@@ -1,11 +1,25 @@
 import styles from "./styles.module.css";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useField } from "formik";
 import cx from "classnames";
 
 const Options = ({ options, ...props }) => {
   const listId = useMemo(() => `${props.name}-list`, [props.name]);
   const [field, meta] = useField(props.name);
+
+  const isChrome =
+    /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+  const computeLabel = useCallback(
+    (option) => {
+      if (isChrome) {
+        return option.label;
+      } else {
+        return `${[option.value, option.label].filter((v) => v).join(" | ")}`;
+      }
+    },
+    [isChrome]
+  );
 
   const displayError = useMemo(() => {
     return meta.error && meta.touched;
@@ -23,10 +37,10 @@ const Options = ({ options, ...props }) => {
         <label className={styles.error_label}>{meta.error}</label>
       )}
       <datalist name={props.name} id={listId}>
-        <select>
+        <select name={props.name}>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {computeLabel(option)}
             </option>
           ))}
         </select>
