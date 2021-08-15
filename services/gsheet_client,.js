@@ -2,13 +2,12 @@ import Axios from "axios";
 
 const BASE_URL = "https://sheets.googleapis.com";
 const spreadsheet = "1KQ8xCUF71Em3hFKk340mpD38Lmvs8rZhJC6E5nFC8NE";
-const answer_sheet = "respuestas";
 
 const client = Axios.create({
   baseURL: BASE_URL,
   params: {
     key: process.env.GSHEET_KEY,
-  }
+  },
 });
 
 export const Gsheet = {
@@ -20,7 +19,7 @@ export const Gsheet = {
         sheets: [questionSheet],
       },
     } = await client.get(`/v4/spreadsheets/${spreadsheet}`, {
-      params: {includeGridData: true },
+      params: { includeGridData: true },
     });
     const {
       data: [
@@ -48,23 +47,5 @@ export const Gsheet = {
     );
 
     return questions;
-  },
-  /**
-   * @param {Record<string, string>} answers
-   */
-  sendAnswers: async (answers) => {
-    const values = Object.entries(answers).map(([name, answer]) => {
-      return ["id", name, answer];
-    });
-
-    const range = `${answer_sheet}!A1:C1`;
-    await client.post(
-      `/v4/spreadsheets/${spreadsheet}/values/${range}:append`,
-      {
-        range: range,
-        majorDimension: "ROWS",
-        values: values,
-      }
-    );
   },
 };
