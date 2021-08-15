@@ -4,10 +4,11 @@ import styles from "./styles.module.css";
 
 import Entry from "../../molecules/Entry";
 import Submit from "../../atoms/Button";
+import Moment from "../../molecules/Moment";
 
 const Questionary = (props) => {
   const initialValues = useMemo(() => {
-    let values = {};
+    let values = { momento: "" };
     props.questions.forEach((question) => {
       values[question.name] = "";
     });
@@ -28,10 +29,14 @@ const Questionary = (props) => {
 
       Object.entries(values).forEach(([entry, answer]) => {
         if (String(answer).trim().length === 0) {
-          errors[entry] = "Debes ingresar un miembro";
+          errors[entry] = "Nada es opcional";
           return;
         }
 
+        // Check members
+        if (entry === "momento") {
+          return;
+        }
         if (options.find(({ value }) => value === answer) === undefined) {
           errors[entry] = "Verifica el miembro";
           return;
@@ -66,6 +71,8 @@ const Questionary = (props) => {
               options={options}
             />
           ))}
+          <br />
+          <Moment name="momento" />
           <br />
           <Submit type="submit" disabled={isSubmitting}>
             Enviar

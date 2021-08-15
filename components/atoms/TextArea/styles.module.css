@@ -1,0 +1,21 @@
+.textarea {
+  width: 100%;
+  min-height: 10rem;
+  max-height: 5rem;
+
+  border-radius: 4px;
+  border: 1px solid var(--color-primary);
+
+  color: var(--color-text);
+  background-color: transparent;
+
+  resize: none;
+}
+
+.textarea_error {
+  border-color: var(--color-error);
+}
+
+.error_label {
+  color: var(--color-error);
+}
