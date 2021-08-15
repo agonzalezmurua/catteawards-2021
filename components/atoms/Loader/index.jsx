@@ -7,7 +7,7 @@ const Loader = (props) => {
     <div className={styles.loader} hidden={props.show}>
       <Image
         className={styles.image}
-        src="https://cdn.discordapp.com/attachments/145997768056504320/876495948648439838/LOGO.png"
+        src="https://cdn.discordapp.com/emojis/403722823962722320.png"
         layout="fill"
         alt="loader"
       />
